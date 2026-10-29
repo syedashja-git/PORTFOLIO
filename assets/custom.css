@@ -65,3 +65,27 @@ html{scroll-padding-bottom:90px}body{min-width:0}main,.main-content,article{min-
     }
 }
 
+.project-card a {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--orange-yellow-crayola);
+    font-size: 13px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+ 
+.portfolio-card a,
+.portfolio-card a:visited,
+.portfolio-card a:hover,
+.portfolio-card a:active,
+.portfolio-card a:focus {
+    color: #ffdb70 !important;
+    text-decoration: none !important;
+}
+ 
