@@ -2,19 +2,45 @@
 const sidebar=document.querySelector('[data-sidebar]');const toggle=document.querySelector('[data-sidebar-btn]');toggle.addEventListener('click',()=>{const open=sidebar.classList.toggle('active');toggle.setAttribute('aria-expanded',String(open));toggle.querySelector('span').textContent=open?'Hide Contacts':'Show Contacts'});
 function navigate(name,scroll=true){if(!document.querySelector(`[data-page="${name}"]`))name='about';document.querySelectorAll('[data-page]').forEach(p=>p.classList.toggle('active',p.dataset.page===name));document.querySelectorAll('[data-nav]').forEach(b=>{b.classList.toggle('active',b.dataset.nav===name);if(b.dataset.nav===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});if(scroll){const top=window.matchMedia('(max-width:1249px)').matches?document.querySelector('.main-content').getBoundingClientRect().top+window.scrollY-16:0;window.scrollTo({top:Math.max(0,top),behavior:'instant'});}}
 document.querySelectorAll('[data-nav],[data-go]').forEach(b=>b.addEventListener('click',()=>{const page=b.dataset.nav||b.dataset.go;location.hash=page;navigate(page)}));window.addEventListener('hashchange',()=>navigate(location.hash.slice(1)));navigate(location.hash.slice(1),false);
- const contactForm = document.querySelector('form');
+ 
+// ===============================
+// CONTACT FORM - GOOGLE APPS SCRIPT
+// ===============================
 
-if (contactForm) {
+const contactForm = document.querySelector('#contact-form');
+const contactStatus = document.querySelector('#form-status');
+const contactFrame = document.querySelector('#contact-response');
+
+if (contactForm && contactStatus && contactFrame) {
+    let isSubmitting = false;
+
     contactForm.addEventListener('submit', () => {
-        const status = document.querySelector('#form-status');
+        isSubmitting = true;
+        contactStatus.textContent = 'Sending your message...';
 
-        if (status) {
-            status.textContent = 'Sending your message…';
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+
+        if (submitButton) {
+            submitButton.disabled = true;
         }
+    });
 
-        // DO NOT use preventDefault().
-        // The form must submit to Google Apps Script.
-      });
+    contactFrame.addEventListener('load', () => {
+        if (!isSubmitting) return;
+
+        isSubmitting = false;
+
+        contactStatus.textContent =
+            '✓ Thank you for reaching out! Your message has been submitted. I’ll get back to you soon.';
+
+        contactForm.reset();
+
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+
+        if (submitButton) {
+            submitButton.disabled = false;
+        }
+    });
 }
 
  const motionObserver=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){entry.target.classList.add('is-visible');motionObserver.unobserve(entry.target)}}},{threshold:0.15});document.querySelectorAll('.skills-list,.tech-item').forEach(item=>motionObserver.observe(item));
