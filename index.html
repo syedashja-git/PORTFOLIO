@@ -441,26 +441,67 @@
                     <h3 class="h3">Let's build something together.</h3>
                     <p>Tell me about your idea, your goals and what you need from your website.</p>
                 </section>
-                <section class="contact-form">
-                    <h3 class="h3 form-title">Start a conversation</h3>
-                    <form action="https://formsubmit.co/infosyedashja@gmail.com" method="POST"><input type="hidden"
-                            name="_subject" value="New portfolio inquiry — Syed Ashja"><input type="hidden"
-                            name="_template" value="table"><input type="hidden" name="_autoresponse"
-                            value="Hello! Thank you for contacting Syed Ashja. Your inquiry has been received. I will review your requirements and get back to you as soon as possible. Looking forward to discussing your project. Best regards, Syed Ashja | Web Developer | infosyedashja@gmail.com"><input
-                            type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
-                            style="display:none">
-                        <div class="input-wrapper"><label>Your name<input class="form-input" name="name"
-                                    autocomplete="name" placeholder="Full name" required></label><label>Email
-                                address<input class="form-input" type="email" name="email" autocomplete="email"
-                                    placeholder="you@example.com" required></label></div><label>Your message<textarea
-                                class="form-input" name="message" placeholder="Tell me about your project…"
-                                required></textarea></label>
-                        <p class="form-note">Your inquiry will be emailed to Syed Ashja. You will receive an
-                            acknowledgement at the email address you provide.</p><button class="form-btn"
-                            type="submit">Send message <span aria-hidden="true">↗</span></button>
-                        <p id="form-status" role="status"></p>
-                    </form>
-                </section>
+              ```html
+<section class="contact-form">
+    <h3 class="h3 form-title">Start a conversation</h3>
+
+    <form action="https://script.google.com/macros/s/AKfycbxiBBEkb4TebRJ1xcw6vbGCjdOpI1fMUzRQ8Pu7NlMN0vUImGk-F0Dr2_NncP1jiJub1Q/exec"
+          method="POST">
+
+        <!-- Spam protection -->
+        <input type="text"
+               name="website"
+               tabindex="-1"
+               autocomplete="off"
+               aria-hidden="true"
+               style="display:none">
+
+        <div class="input-wrapper">
+
+            <label>
+                Your name
+                <input class="form-input"
+                       name="name"
+                       autocomplete="name"
+                       placeholder="Full name"
+                       required>
+            </label>
+
+            <label>
+                Email address
+                <input class="form-input"
+                       type="email"
+                       name="email"
+                       autocomplete="email"
+                       placeholder="you@example.com"
+                       required>
+            </label>
+
+        </div>
+
+        <label>
+            Your message
+            <textarea class="form-input"
+                      name="message"
+                      placeholder="Tell me about your project…"
+                      required></textarea>
+        </label>
+
+        <p class="form-note">
+            Your inquiry will be emailed to Syed Ashja.
+            You will receive an acknowledgement at the email address you provide.
+        </p>
+
+        <button class="form-btn" type="submit">
+            Send message
+            <span aria-hidden="true">↗</span>
+        </button>
+
+        <p id="form-status" role="status"></p>
+
+    </form>
+</section>
+```
             </article>
         </div>
     </main>
